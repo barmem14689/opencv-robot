@@ -26,12 +26,12 @@ void GoForward(){
   motorB.motorGo(200);
 }
 void GoLeft(){
-  motorA.stopMotor();
-  motorB.motorGo(600);
+  motorA.motorGo(-700);
+  motorB.motorGo(750);
 }
 void GoRight(){
-  motorA.motorGo(500);
-  motorB.stopMotor();
+  motorA.motorGo(700);
+  motorB.motorGo(-750);
 }
 void stop(){
   motorA.stopMotor();
