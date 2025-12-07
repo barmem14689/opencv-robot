@@ -8,9 +8,11 @@ def zov(x,in_min,in_max,out_min,out_max):
     y = int(z)
     return y
 
-ser = serial.Serial('COM1',9600,timeout=1)
+ser = serial.Serial('COM5',9600,timeout=1)
 
 cap = cv2.VideoCapture(0)
+
+FinalCoordinat = 0 #питон ебанное дерьмо ненавижу сука
 
 while True:
     res,frame = cap.read()
@@ -43,10 +45,13 @@ while True:
             cx = x + w // 2
             cy = y + h // 2
             cv2.circle(frame, (cx, cy), 5, (255,0,0), -1)
-            cv2.putText(img=frame,text=str(cx),org=(x,w),fontFace=cv2.FONT_HERSHEY_COMPLEX,fontScale=1,color=(0,255,0),thickness=1)
-            ccx = zov(cx,23,627,0,255)
-            ser.write(bytes([ccx]))
-            
+            ccx = zov(cx,20,627,0,255)
+            cv2.putText(img=frame,text=str(ccx),org=(x,w),fontFace=cv2.FONT_HERSHEY_COMPLEX,fontScale=1,color=(0,255,0),thickness=1)
+            FinalCoordinat = ccx
+        else:
+            FinalCoordinat = 0        
+    ser.write(bytes([FinalCoordinat]))
+    print(FinalCoordinat)
 
     cv2.imshow("Red Tracker", frame)
 
@@ -56,4 +61,5 @@ while True:
 
 cap.release()
 cv2.destroyAllWindows()
+
 
