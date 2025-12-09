@@ -26,12 +26,12 @@ void GoForward(){
   motorB.motorGo(200);
 }
 void GoLeft(){
-  motorA.motorGo(-700);
+  motorA.motorGo(-690);
   motorB.motorGo(750);
 }
 void GoRight(){
   motorA.motorGo(700);
-  motorB.motorGo(-750);
+  motorB.motorGo(-700);
 }
 void stop(){
   motorA.stopMotor();
@@ -42,15 +42,15 @@ void loop() {
   // put your main code here, to run repeatedly:
   if(Serial.available()!=0){
     cx = Serial.read();
-    if(cx>128){
+    if(cx>140){
       GoRight();
       delay(10);
     }
-    else if(cx<126 and cx >0){
+    else if(cx<115 and cx >0){
       GoLeft();
       delay(10);
     }
-    else if(cx == 127){
+    else if(cx <= 140 and cx>= 115){
       GoForward();
       delay(10);
     }
