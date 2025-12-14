@@ -6,7 +6,7 @@ def zov(x,in_min,in_max,out_min,out_max):
     z = (x-in_min) * (out_max - out_min) / (in_max - in_min) + out_min
     return int(z)
 
-ser = serial.Serial('COM5',9600,timeout=1)
+ser = serial.Serial('/dev/ttyUSB0',9600,timeout=1)
 cap = cv2.VideoCapture(1)
 
 cascade = cv2.CascadeClassifier('cascades/face.xml')
