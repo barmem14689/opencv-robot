@@ -1,0 +1,33 @@
+<html>
+<head>
+  <style>
+    button { width:120px; height:120px; font-size:24px; }
+  </style>
+  <link rel = "stylesheet" href="style.css">
+</head>
+<body>
+  <div id = "everything">
+    <h2 id="main-text">CozmoGeorge</h2>
+
+    <img 
+      src="https://images.steamusercontent.com/ugc/97227715077393656/59CDAB1F03CD2E062EB92A35420B65CCB1CCDB6D/?imw=637&imh=358&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true" 
+      class = "video"
+      alt = "video not found"
+      width="320"
+    >
+    <br><br>
+    <div id = "buttons">
+      <button onclick="send('F')">Вперёд</button><br><br>
+      <button onclick="send('L')">Влево</button>
+      <button onclick="send('S')">Стоп</button>
+      <button onclick="send('R')">Вправо</button><br><br>
+      <button onclick="send('B')">Назад</button>
+    </div>
+    <script>
+      function send(cmd) {
+        fetch("/cmd/" + cmd);
+      }
+    </script>
+  </div>
+</body>
+</html>
