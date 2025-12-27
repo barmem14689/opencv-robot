@@ -15,7 +15,7 @@ except:
     print("Error,Cant find port")
 
 try:
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
 except:
     cap = None
     print("Error, Cant find camera, try to change cv2.VideoCapture(from 1 to 0)")
@@ -53,7 +53,7 @@ while True:
             cx = x + w // 2
             cy = y + h // 2
             cv2.circle(frame, (cx, cy), 5, (255,0,0), -1)
-            ccx = zov(cx,20,627,0,255)
+            ccx = zov(cx,15,1200,0,255)
             cv2.putText(img=frame,text=str(ccx),org=(x,w),fontFace=cv2.FONT_HERSHEY_COMPLEX,fontScale=1,color=(0,255,0),thickness=1)
             FinalCoordinat = ccx
         else:
@@ -61,12 +61,13 @@ while True:
     ser.write(bytes([FinalCoordinat]))
     print(FinalCoordinat)
 
-    cv2.imshow("Red Tracker", frame)
+    #cv2.imshow("Red Tracker", frame)
 
     if cv2.waitKey(1) & 0xFF == 27:
         break
 
 
 cap.release()
+ser.write(bytes([0]))
 cv2.destroyAllWindows()
 
