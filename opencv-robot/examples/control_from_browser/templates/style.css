@@ -1,0 +1,20 @@
+.video{
+    display: block;
+    margin: auto;
+    border-radius: 5%;
+    margin-bottom: 1px;
+    margin-top: 1px;
+    height: 615px;
+    width: 950px;
+}
+#main-text{
+    text-align: center;
+    background-color: aquamarine;
+    color: blue;
+}
+#everything{
+    background-color: aqua;
+}
+#buttons{
+    text-align: center;
+}
